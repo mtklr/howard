@@ -8,7 +8,7 @@ Based on AsteroidsQC by [Gary C. Martin](http://osx.garycmartin.com).
 
 ## Install
 
-Copy `Howard.qtz` to `~/Library/Screen Savers`, or `/Library/Screen Savers` for system-wide use.
+Copy `Howard.qtz` to `~/Library/Screen Savers`, or `/Library/Screen Savers` for all users.
 
 It should now be a listed under Screen Savers in System Preferences.
 
