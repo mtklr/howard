@@ -1,6 +1,6 @@
 # Howard Chicken: The Screensaver.
 
-[Howard Chicken](http://5by5.tv/b2w/126) flaps around reciting titles from the venerable [Back to Work](http://5by5.tv/b2w) podcast.
+[Howard Chicken](http://5by5.tv/b2w/126) flaps around while reciting titles from the venerable [Back to Work](http://5by5.tv/b2w) podcast.
 
 ![howard](howard.png)
 
