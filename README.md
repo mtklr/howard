@@ -10,6 +10,8 @@ Based on AsteroidsQC by [Gary C. Martin](http://osx.garycmartin.com).
 
 Copy `Howard.qtz` to `~/Library/Screen Savers`, or `/Library/Screen Savers` for all users.
 
-It should now be a listed under Screen Savers in System Preferences.
+Or clone and `ln -s /path/to/clone/Howard.qtz ~/Library/Screensavers/Howard.qtz`, then `git pull` to keep it updated.
+
+It should appear under Screen Savers in System Preferences.
 
 It's running on 10.10.1/Yosemite; older versions, ymmv.
