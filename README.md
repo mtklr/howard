@@ -2,7 +2,7 @@
 
 [Howard Chicken](http://5by5.tv/b2w/126) flaps around your screen, uttering titles from the venerable [Back to Work](http://5by5.tv/b2w) podcast.
 
-![howard](howard.png)
+![howard](http://mtklr.github.com/images/howard.png)
 
 Based on AsteroidsQC by [Gary C. Martin](http://osx.garycmartin.com).
 
