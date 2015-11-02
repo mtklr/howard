@@ -14,4 +14,4 @@ Or clone and `ln -s /path/to/clone/Howard.qtz ~/Library/Screensavers/Howard.qtz`
 
 It should appear under Screen Savers in System Preferences.
 
-It's running on 10.10.1/Yosemite; older versions, ymmv.
+It's running on 10.11.1/El Capitan; older versions, ymmv.
