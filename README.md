@@ -14,4 +14,9 @@ Or clone and `ln -s /path/to/clone/Howard.qtz ~/Library/Screensavers/Howard.qtz`
 
 It should appear under Screen Savers in System Preferences.
 
-It's running on 10.11.1/El Capitan; older versions, ymmv.
+It's running on 10.11.5/El Capitan; older versions, ymmv.
+
+## Desktop Chicken
+1. Select as a screen saver in System Preferences.
+2. `/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background &`
+3. Enjoy increased productivity and wisdom.
