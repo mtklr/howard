@@ -1,5 +1,5 @@
 # Howard Chicken - The Screensaver
-[Howard Chicken](http://5by5.tv/b2w/126) flaps around your screen, uttering titles, topics and phrases from the venerable [Back to Work](http://5by5.tv/b2w) podcast.
+[Howard Chicken](http://5by5.tv/b2w/126) flaps around the screen uttering titles, topics, and a bespoke, artisanal, farm-to-monitor, curated selection of phrases from the venerable [Back to Work](http://5by5.tv/b2w) podcast.
 
 ![howard](https://mtklr.github.com/images/howard.png)
 
@@ -8,7 +8,7 @@ Based on [AsteroidsQC](http://garycmartin.com/osx/AsteroidsQC.qtz.zip) by [Gary 
 ## Install
 Copy _Howard.qtz_ to _~/Library/Screen Savers_, or _/Library/Screen Savers_ for all users.
 
-* In 10.11+ the "Screen Saver Options..." preferences sheet is blank. Apple isn't interested in figuring out why.
+* In 10.11+ the "Screen Saver Options..." preferences sheet is blank (Apple isn't interested in figuring out why).
 
 ## Update
 ```
