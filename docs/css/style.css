@@ -1,0 +1,74 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 100%;
+	font: 1em Futura, Helvetica, sans-serif;
+}
+
+a {
+	color: #369;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #900;
+}
+
+.day {
+	background: #fff;
+	color: #000;
+}
+
+.night {
+	background: #000;
+	color: #fff;
+}
+
+.container {
+	position: relative;
+	margin: auto;
+	width: 600px;
+	height: 850px;
+}
+
+.bubble {
+	position: absolute;
+	top: 10px;
+	width: 400px;
+	padding: 115px 20px;
+	background: url("../images/bubble.svg") no-repeat center;
+	background-size: 100% 100%;
+	z-index: 1;
+	animation: bmove 7s ease infinite alternate;
+}
+
+@keyframes bmove {
+	0%   { transform: translate(0, 0px); }
+	100% { transform: translate(0, 5px); }
+}
+
+.bubble-text {
+	color: #000;
+	margin-bottom: 14px;
+	font: 1.7em Futura, Helvetica, sans-serif;
+	text-align: center;
+	line-height: 1.2;
+	hyphens: auto;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+}
+
+.howard {
+	position: absolute;
+	bottom: 10px;
+	right: 0px;
+	width: 400px;
+	animation: hmove 10s ease-in-out infinite alternate;
+}
+
+@keyframes hmove {
+	0%   { transform: translate(0, 0); }
+	100% { transform: translate(0, -10px); }
+}
