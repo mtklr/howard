@@ -12,7 +12,7 @@ Copy _Howard.qtz_ to _~/Library/Screen Savers_, or _/Library/Screen Savers_ for 
 
 ## Update
 ```console
-curl -s -o ~/Library/Screen\ Savers/Howard.qtz 'https://raw.githubusercontent.com/mtklr/howard/master/Howard.qtz'
+curl -o ~/Library/Screen\ Savers/Howard.qtz 'https://raw.githubusercontent.com/mtklr/howard/master/Howard.qtz'
 ```
 
 Or `crontab -e`:
@@ -26,6 +26,7 @@ MAILTO=""
 
 ## Way of the Future?
 ```console
+curl -O 'https://raw.githubusercontent.com/mtklr/howard/master/howard{,.dat}'
 brew install fortune
 fortune howard
 ```
