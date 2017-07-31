@@ -37,7 +37,7 @@ a:hover {
 	position: absolute;
 	top: 10px;
 	width: 400px;
-	padding: 115px 20px;
+	height: 300px;
 	background: url("../images/bubble.svg") no-repeat center;
 	background-size: 100% 100%;
 	z-index: 1;
@@ -50,8 +50,12 @@ a:hover {
 }
 
 .bubble-text {
+	position: absolute;
+	top: 48%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
 	color: #000;
-	margin-bottom: 14px;
 	font: 1.7em Futura, Helvetica, sans-serif;
 	text-align: center;
 	line-height: 1.2;
