@@ -16,6 +16,10 @@ a:hover {
 	color: #900;
 }
 
+a:visited {
+	color: #369;
+}
+
 .day {
 	background: #fff;
 	color: #000;
