@@ -1,5 +1,7 @@
 # Howard Chicken - The Screensaver
-[Howard Chicken](http://5by5.tv/b2w/126) flaps around uttering titles, topics, and a bespoke, artisanal, farm-to-monitor, curated selection of phrases from the venerable [Back to Work](http://5by5.tv/b2w) podcast.
+[Howard Chicken](http://5by5.tv/b2w/126) flaps around uttering an artisanal, bespoke, curated, farm-to-screen selection of titles, topics, and phrases from the venerable [Back to Work](http://5by5.tv/b2w) podcast.
+
+(No affiliation with the show, just a fan.)
 
 ![howard](https://mtklr.github.com/images/howard.png)
 
