@@ -56,12 +56,54 @@ function fadeIn(el, display) {
 	el.style.display = display || "block";
 
 	(function fade() {
-		var val = parseFloat(el.style.opacity) + 0.1; //'let'
+		var val = parseFloat(el.style.opacity) + 0.1; // 'let'
 		if (val < 1) {
 			el.style.opacity = val;
 			requestAnimationFrame(fade);
 		}
 	}());
+}
+
+var sound = 0;
+
+function toggleSound() {
+	if (sound === 0) {
+		sound = 1;
+	} else {
+		sound = 0;
+	}
+
+	if (sound === 1) {
+		sayQuote();
+	}
+}
+
+function sayQuote() {
+	if (! 'speechSynthesis' in window) {
+		return;
+	}
+
+	var text = document.getElementById("phrase").innerHTML;
+	text = text.replace(/(<a href[^>]*>|<\/a>)/g, ""); // remove tags or they're spoken
+	var msg = new SpeechSynthesisUtterance();
+	var voices = window.speechSynthesis.getVoices();
+
+	msg.lang = 'en-GB';
+
+	// we prefer Daniel
+	for (i = 0; i < voices.length; i++) {
+		if (voices[i].name == 'Daniel') {
+			msg.voice = voices.filter(function(voice) { return voice.name == 'Daniel'; })[0];
+			break;
+		}
+	}
+
+	msg.volume = 1;
+	msg.rate = 1;
+	msg.pitch = 1;
+	msg.text = text;
+
+	speechSynthesis.speak(msg);
 }
 
 function howNow() {
@@ -70,6 +112,9 @@ function howNow() {
 		document.getElementById("phrase").innerHTML = "<a href=\"http://www.upc-online.org/respect/\">Happy International Respect for Chickens Day.</a>";
 	} else {
 		pickQuote();
+	}
+	if (sound === 1) {
+		sayIt = setTimeout(sayQuote, 1000); // needs a delay
 	}
 	fadeIn(document.getElementById("bub"));
 }
