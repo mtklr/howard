@@ -75,4 +75,4 @@ function howNow() {
 }
 
 window.onload = howNow();
-const updateBubble = setInterval(howNow, 180000);
+const updateBubble = setInterval(howNow, 90000);
