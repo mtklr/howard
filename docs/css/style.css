@@ -33,13 +33,12 @@ a:visited {
 .container {
 	position: relative;
 	margin: auto;
-	width: 600px;
-	height: 850px;
+	width: 580px;
+	height: 840px;
 }
 
 .bubble {
 	position: absolute;
-	top: 10px;
 	width: 400px;
 	height: 300px;
 	background: url("../images/bubble.svg") no-repeat center;
@@ -48,15 +47,16 @@ a:visited {
 }
 
 .bubble-text {
-	position: absolute;
-	top: 48%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	position: relative;
+	top: 46%;
+	margin: auto;
+	transform: translate(0%, -50%);
 	width: 80%;
 	color: #000;
-	font: 1.7em Futura, Helvetica, sans-serif;
+	font-size: 1.7em;
 	text-align: center;
 	line-height: 1.2;
+	word-break: break-word;
 	hyphens: auto;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
@@ -64,7 +64,7 @@ a:visited {
 
 .howard {
 	position: absolute;
-	bottom: 10px;
+	bottom: 0px;
 	right: 0px;
 	width: 400px;
 }
