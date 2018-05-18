@@ -88,12 +88,17 @@ function sayQuote() {
 	var msg = new SpeechSynthesisUtterance();
 	var voices = window.speechSynthesis.getVoices();
 
-	msg.lang = 'en-GB';
+	// set default (fallback) voice
+	msg.voice = voices[0];
 
-	// we prefer Daniel
+	// we prefer a British accent (Daniel, hopefully)
 	for (i = 0; i < voices.length; i++) {
-		if (voices[i].name == 'Daniel') {
-			msg.voice = voices.filter(function(voice) { return voice.name == 'Daniel'; })[0];
+		if (voices[i].lang == 'en-GB') {
+			if (voices[i].name == 'Daniel') {
+				msg.voice = voices.filter(function(voice) { return voice.name == 'Daniel'; })[0];
+			} else {
+				msg.voice = voices.filter(function(voice) { return voice.lang == 'en-GB'; })[0];
+			}
 			break;
 		}
 	}
