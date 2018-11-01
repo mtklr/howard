@@ -7,7 +7,9 @@
 
 Based on [AsteroidsQC](http://garycmartin.com/osx/AsteroidsQC.qtz.zip) by [Gary C. Martin](http://osx.garycmartin.com).
 
-## Install
+* macOS 10.14 (Mojave) no longer supports Quartz Composer screensavers, so... no more screensaver updates. The fortunes and site will still be updated.
+
+## Install (macOS < 10.14)
 Copy _Howard.qtz_ to _~/Library/Screen Savers_, or _/Library/Screen Savers_ for all users.
 
 * In 10.11+ the "Screen Saver Options..." preferences sheet doesn't work.
