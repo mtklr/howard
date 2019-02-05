@@ -1,35 +1,48 @@
-function pickQuote() {
-	// https://stackoverflow.com/a/40332133
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === XMLHttpRequest.DONE) {
-		   	if (xhr.status === 200) {
-				const quotes = JSON.parse(xhr.responseText);
-				const pick = Math.floor(Math.random() * (quotes.data.length - 1)) + 1;
+function getQuotes() {
+	if (sessionStorage.length < 1) {
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "js/howard.json", true);
 
-				if (quotes.data[pick].title) {
-					var t = quotes.data[pick].title;
-					if (quotes.data[pick].topic) {
-						// if there's a topic, maybe pick it
-						const pickedTopic = Math.floor(Math.random() * 2);
-						if (pickedTopic === 1) {
-							t = quotes.data[pick].topic;
-						}
-					}
-
-					const url = "http://5by5.tv/b2w/" + pick;
-					document.getElementById("phrase").innerHTML = "<a href=\"" +
-						url.toString() + "\">" + t + "</a>";
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					var data = JSON.parse(xhr.responseText);
+					pickQuote(data);
 				} else {
-					document.getElementById("phrase").innerHTML = quotes.data[pick].text;
+					document.getElementById("phrase").innerHTML = "Hmm.";
 				}
-			} else {
-				document.getElementById("phrase").innerHTML = "Hmm.";
+			}
+			sessionStorage.setItem("howard", JSON.stringify(data));
+		};
+
+		xhr.send();
+	} else {
+		var stored = JSON.parse(sessionStorage.getItem("howard"));
+		pickQuote(stored);
+	}
+}
+
+// for titles, show number matches its array index.
+// pick from 1..last element in the array.
+function pickQuote(quotes) {
+	const pick = Math.floor(Math.random() * (quotes.data.length - 1)) + 1;
+
+	if (quotes.data[pick].title) {
+		var t = quotes.data[pick].title;
+		if (quotes.data[pick].topic) {
+			// if there's a topic, maybe pick it
+			const pickedTopic = Math.floor(Math.random() * 2);
+			if (pickedTopic === 1) {
+				t = quotes.data[pick].topic;
 			}
 		}
-	};
-	xhr.open("GET", "js/howard.json", true);
-	xhr.send();
+
+		const url = "http://5by5.tv/b2w/" + pick;
+		document.getElementById("phrase").innerHTML = "<a href=\"" +
+			url.toString() + "\">" + t + "</a>";
+	} else {
+		document.getElementById("phrase").innerHTML = quotes.data[pick].text;
+	}
 }
 
 function applyTheme() {
@@ -116,7 +129,7 @@ function howNow() {
 	if (checkDay()) {
 		document.getElementById("phrase").innerHTML = "<a href=\"http://www.upc-online.org/respect/\">Happy International Respect for Chickens Day.</a>";
 	} else {
-		pickQuote();
+		getQuotes();
 	}
 	if (sound === 1) {
 		sayIt = setTimeout(sayQuote, 1000); // needs a delay
