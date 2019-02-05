@@ -1,6 +1,6 @@
 var sound = false;
 window.onload = howNow();
-const updateBubble = setInterval(howNow, 90000);
+const updateBubble = setInterval(howNow, 60000);
 
 function howNow() {
 	applyTheme(19, 5);
