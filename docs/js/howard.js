@@ -45,18 +45,21 @@ function pickQuote(quotes) {
 	}
 }
 
-function applyTheme() {
+function applyTheme(startNightHour, endNightHour) {
 	const hour = new Date().getHours();
-	if (hour > 19 || hour < 5) {
+
+	if (hour > startNightHour || hour < endNightHour) {
 		document.body.className = "night";
 	} else {
 		document.body.className = "day";
 	}
 }
 
-function checkDay() {
+// month is 0..11, day is 1..31
+function checkDay(month, day) {
 	const d = new Date();
-	if (d.getMonth() === 4 && d.getDate() === 4) {
+
+	if (d.getMonth() === month && d.getDate() === day) {
 		return true;
 	} else {
 		return false;
@@ -125,9 +128,12 @@ function sayQuote() {
 }
 
 function howNow() {
-	applyTheme();
-	if (checkDay()) {
-		document.getElementById("phrase").innerHTML = "<a href=\"http://www.upc-online.org/respect/\">Happy International Respect for Chickens Day.</a>";
+	applyTheme(19, 5);
+
+	if (checkDay(4, 4)) {
+		document.getElementById("phrase").innerHTML =
+			"<a href=\"http://www.upc-online.org/respect/\">\
+			Happy International Respect for Chickens Day.</a>";
 	} else {
 		getQuotes();
 	}
