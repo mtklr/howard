@@ -69,9 +69,7 @@ function sayQuote() {
 		return;
 	}
 
-	var text = document.getElementById("phrase").innerHTML;
-	// remove tags or they're spoken
-	text = text.replace(/(<a href[^>]*>|<\/a>)/g, "");
+	var text = document.getElementById("phrase").textContent;
 	var msg = new SpeechSynthesisUtterance();
 	var voices = window.speechSynthesis.getVoices();
 
@@ -111,7 +109,7 @@ function getQuotes() {
 					var data = JSON.parse(xhr.responseText);
 					pickQuote(data);
 				} else {
-					document.getElementById("phrase").innerHTML = "Hmm.";
+					document.getElementById("phrase").textContent = "Hmm.";
 				}
 			}
 			sessionStorage.setItem("howard", JSON.stringify(data));
@@ -143,6 +141,6 @@ function pickQuote(quotes) {
 		document.getElementById("phrase").innerHTML = "<a href=\"" +
 			url.toString() + "\">" + t + "</a>";
 	} else {
-		document.getElementById("phrase").innerHTML = quotes.data[pick].text;
+		document.getElementById("phrase").textContent = quotes.data[pick].text;
 	}
 }
