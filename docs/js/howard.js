@@ -1,6 +1,6 @@
-var sound = false;
+var speech = false;
 var button = document.getElementById('speak')
-button.addEventListener("click", toggleSound, false);
+button.addEventListener("click", toggleSpeech, false);
 window.onload = howNow();
 const updateBubble = setInterval(howNow, 60000);
 
@@ -17,7 +17,7 @@ function howNow() {
 
 	fadeIn(document.getElementById("bub"));
 
-	if (sound === true) {
+	if (speech === true) {
 		sayIt = setTimeout(sayQuote, 1000); // needs a delay
 	}
 }
@@ -57,12 +57,12 @@ function fadeIn(el, display) {
 	}());
 }
 
-function toggleSound(e) {
-	if (sound === false) {
-		sound = true;
+function toggleSpeech(e) {
+	if (speech === false) {
+		speech = true;
 		sayQuote();
 	} else {
-		sound = false;
+		speech = false;
 	}
 }
 
