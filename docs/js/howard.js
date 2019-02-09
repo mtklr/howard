@@ -1,4 +1,6 @@
 var sound = false;
+var button = document.getElementById('speak')
+button.addEventListener("click", toggleSound, false);
 window.onload = howNow();
 const updateBubble = setInterval(howNow, 60000);
 
@@ -55,7 +57,7 @@ function fadeIn(el, display) {
 	}());
 }
 
-function toggleSound() {
+function toggleSound(e) {
 	if (sound === false) {
 		sound = true;
 		sayQuote();
