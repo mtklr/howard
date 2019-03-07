@@ -54,7 +54,7 @@ function fadeIn(el, display) {
 			el.style.opacity = val;
 			requestAnimationFrame(fade);
 		}
-	}());
+	})();
 }
 
 function toggleSpeech(e) {
