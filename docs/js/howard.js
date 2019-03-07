@@ -61,8 +61,16 @@ function toggleSpeech(e) {
 	if (speech === false) {
 		speech = true;
 		sayQuote();
+		document.getElementById("sound").classList.add("speakicon");
+		setTimeout(function() {
+			document.getElementById("sound").classList.remove("speakicon");
+		}, 500);
 	} else {
 		speech = false;
+		document.getElementById("sound").classList.add("dontspeakicon");
+		setTimeout(function() {
+			document.getElementById("sound").classList.remove("dontspeakicon");
+		}, 500);
 	}
 }
 
