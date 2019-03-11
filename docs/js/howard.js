@@ -109,28 +109,44 @@ function sayQuote() {
 	speechSynthesis.speak(msg);
 }
 
-function getQuotes() {
-	if (sessionStorage.length < 1) {
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "js/howard.json", true);
+// https://developers.google.com/web/fundamentals/primers/promises
+function get(url) {
+	return new Promise(function(resolve, reject) {
+		// xhr
+		var req = new XMLHttpRequest();
+		req.open('GET', url);
 
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4) {
-				if (xhr.status === 200) {
-					var data = JSON.parse(xhr.responseText);
-					pickQuote(data);
-				} else {
-					document.getElementById("phrase").textContent = "Hmm.";
-				}
+		req.onload = function() {
+			if (req.status == 200) {
+				resolve(req.response);
+			} else {
+				reject(Error(req.statusText));
 			}
-			sessionStorage.setItem("howard", JSON.stringify(data));
 		};
 
-		xhr.send();
-	} else {
-		var stored = JSON.parse(sessionStorage.getItem("howard"));
-		pickQuote(stored);
-	}
+		// handle errors
+		req.onerror = function() {
+			reject(Error("Network Error"));
+		};
+
+		// make the request
+		req.send();
+	});
+}
+
+function getJSON(url) {
+	return get(url).then(JSON.parse).catch(function(error) {
+		// console.error("getJSON failed for ", url, error);
+		throw error;
+	});
+}
+
+function getQuotes() {
+	return getJSON('js/howard.json').then(function(response) {
+		pickQuote(response);
+	}).catch(function(error) {
+		document.getElementById("phrase").textContent = "Hmm.";
+	}, Promise.resolve());
 }
 
 // for titles, show number matches its array index.
