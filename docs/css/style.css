@@ -56,7 +56,9 @@ a:visited {
 	font-size: 1.7em;
 	text-align: center;
 	line-height: 1.2;
-	word-break: break-word;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
 }
 
 .howard {
