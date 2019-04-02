@@ -1,26 +1,8 @@
 var speech = false;
-var button = document.getElementById('speak')
+var button = document.getElementById("speak");
 button.addEventListener("click", toggleSpeech, false);
 window.onload = howNow();
 const updateBubble = setInterval(howNow, 60000);
-
-function howNow() {
-	applyTheme(19, 5);
-
-	if (checkDay(4, 4)) {
-		document.getElementById("phrase").innerHTML =
-			"<a href=\"http://www.upc-online.org/respect/\">\
-			Happy International Respect for Chickens Day.</a>";
-	} else {
-		getQuotes();
-	}
-
-	fadeIn(document.getElementById("bub"));
-
-	if (speech === true) {
-		sayIt = setTimeout(sayQuote, 1000); // needs a delay
-	}
-}
 
 function applyTheme(startNightHour, endNightHour) {
 	const hour = new Date().getHours();
@@ -43,88 +25,24 @@ function checkDay(month, day) {
 	}
 }
 
-// fade in - https://gist.github.com/chrisbuttery/cf34533cbb30c95ff155
-function fadeIn(el, display) {
-	el.style.opacity = 0;
-	el.style.display = display || "block";
-
-	(function fade() {
-		var val = parseFloat(el.style.opacity) + 0.1;
-		if (val < 1) {
-			el.style.opacity = val;
-			requestAnimationFrame(fade);
-		}
-	})();
-}
-
-function toggleSpeech(e) {
-	if (speech === false) {
-		speech = true;
-		sayQuote();
-		document.getElementById("sound").classList.add("speakicon");
-		setTimeout(function() {
-			document.getElementById("sound").classList.remove("speakicon");
-		}, 500);
-	} else {
-		speech = false;
-		document.getElementById("sound").classList.add("dontspeakicon");
-		setTimeout(function() {
-			document.getElementById("sound").classList.remove("dontspeakicon");
-		}, 500);
-	}
-}
-
-function sayQuote() {
-	if (! 'speechSynthesis' in window) {
-		return;
-	}
-
-	var text = document.getElementById("phrase").textContent;
-	var msg = new SpeechSynthesisUtterance();
-	var voices = window.speechSynthesis.getVoices();
-
-	// set default/fallback voice
-	msg.voice = voices[0];
-
-	// we prefer a British accent (Daniel, hopefully)
-	voices.forEach(function(voice) {
-		if (voice.lang === 'en-GB') {
-			if (voice.name === 'Daniel') {
-				msg.voice = voices.filter(function(voice) {
-					return voice.name === 'Daniel'; })[0];
-			} else {
-				msg.voice = voices.filter(function(voice) {
-					return voice.lang === 'en-GB'; })[0];
-			}
-		}
-	});
-
-	msg.volume = 1;
-	msg.rate = 1;
-	msg.pitch = 1;
-	msg.text = text;
-
-	speechSynthesis.speak(msg);
-}
-
 // https://developers.google.com/web/fundamentals/primers/promises
 function get(url) {
 	return new Promise(function(resolve, reject) {
 		// xhr
 		var req = new XMLHttpRequest();
-		req.open('GET', url);
+		req.open("GET", url);
 
 		req.onload = function() {
-			if (req.status == 200) {
+			if (req.status === 200) {
 				resolve(req.response);
 			} else {
-				reject(Error(req.statusText));
+				reject(new Error(req.statusText));
 			}
 		};
 
 		// handle errors
 		req.onerror = function() {
-			reject(Error("Network Error"));
+			reject(new Error("Network Error"));
 		};
 
 		// make the request
@@ -137,14 +55,6 @@ function getJSON(url) {
 		// console.error("getJSON failed for ", url, error);
 		throw error;
 	});
-}
-
-function getQuotes() {
-	return getJSON('js/howard.json').then(function(response) {
-		pickQuote(response);
-	}).catch(function(error) {
-		document.getElementById("phrase").textContent = "Hmm.";
-	}, Promise.resolve());
 }
 
 // for titles, show number matches its array index.
@@ -167,5 +77,97 @@ function pickQuote(quotes) {
 			url.toString() + "\">" + t + "</a>";
 	} else {
 		document.getElementById("phrase").textContent = quotes.data[pick].text;
+	}
+}
+
+function getQuotes() {
+	return getJSON("js/howard.json").then(function(response) {
+		pickQuote(response);
+	}).catch(function(error) {
+		document.getElementById("phrase").textContent = "Hmm.";
+		throw error;
+	}, Promise.resolve());
+}
+
+function sayQuote() {
+	if (! window.hasOwnProperty("speechSynthesis")) {
+		return;
+	}
+
+	var text = document.getElementById("phrase").textContent;
+	var msg = new SpeechSynthesisUtterance();
+	var voices = window.speechSynthesis.getVoices();
+
+	// set default/fallback voice
+	msg.voice = voices[0];
+
+	// we prefer a British accent (Daniel, hopefully)
+	voices.forEach(function(voice) {
+		if (voice.lang === "en-GB") {
+			if (voice.name === "Daniel") {
+				msg.voice = voices.filter(function(voice) {
+					return voice.name === "Daniel"; })[0];
+			} else {
+				msg.voice = voices.filter(function(voice) {
+					return voice.lang === "en-GB"; })[0];
+			}
+		}
+	});
+
+	msg.volume = 1;
+	msg.rate = 1;
+	msg.pitch = 1;
+	msg.text = text;
+
+	speechSynthesis.speak(msg);
+}
+
+function toggleSpeech() {
+	if (speech === false) {
+		speech = true;
+		sayQuote();
+		document.getElementById("sound").classList.add("speakicon");
+		setTimeout(function() {
+			document.getElementById("sound").classList.remove("speakicon");
+		}, 500);
+	} else {
+		speech = false;
+		document.getElementById("sound").classList.add("dontspeakicon");
+		setTimeout(function() {
+			document.getElementById("sound").classList.remove("dontspeakicon");
+		}, 500);
+	}
+}
+
+// https://gist.github.com/chrisbuttery/cf34533cbb30c95ff155
+function fadeIn(el, display) {
+	el.style.opacity = 0;
+	el.style.display = display || "block";
+
+	function fade() {
+		var val = parseFloat(el.style.opacity) + 0.1;
+		if (val < 1) {
+			el.style.opacity = val;
+			requestAnimationFrame(fade);
+		}
+	}
+
+	fade();
+}
+
+function howNow() {
+	applyTheme(19, 5);
+
+	if (checkDay(4, 4)) {
+		document.getElementById("phrase").innerHTML =
+			"<a href=\"http://www.upc-online.org/respect/\">Happy International Respect for Chickens Day.</a>";
+	} else {
+		getQuotes();
+	}
+
+	fadeIn(document.getElementById("bub"));
+
+	if (speech === true) {
+		setTimeout(sayQuote, 1000); // needs a delay
 	}
 }
