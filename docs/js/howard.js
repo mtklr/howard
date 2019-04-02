@@ -1,8 +1,7 @@
 var speech = false;
 var button = document.getElementById("speak");
 button.addEventListener("click", toggleSpeech, false);
-window.onload = howNow();
-const updateBubble = setInterval(howNow, 60000);
+window.onload = loop();
 
 function applyTheme(startNightHour, endNightHour) {
 	const hour = new Date().getHours();
@@ -170,4 +169,9 @@ function howNow() {
 	if (speech === true) {
 		setTimeout(sayQuote, 1000); // needs a delay
 	}
+}
+
+function loop() {
+	howNow();
+	setTimeout(loop, Math.floor(Math.random() * 40000 + 10000));
 }
