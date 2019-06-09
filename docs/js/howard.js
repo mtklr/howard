@@ -140,15 +140,18 @@ function toggleSpeech() {
 }
 
 // https://gist.github.com/chrisbuttery/cf34533cbb30c95ff155
-function fadeIn(el, display) {
+function fadeIn(el, interval, display) {
 	el.style.opacity = 0;
 	el.style.display = display || "block";
+	interval = interval || 0.1;
 
 	function fade() {
-		var val = parseFloat(el.style.opacity) + 0.1;
+		var val = parseFloat(el.style.opacity) + interval;
 		if (val < 1) {
 			el.style.opacity = val;
 			requestAnimationFrame(fade);
+		} else {
+			el.style.opacity = 1;
 		}
 	}
 
@@ -165,11 +168,12 @@ function howNow() {
 		getQuotes();
 	}
 
-	fadeIn(document.getElementById("bub"));
+	fadeIn(document.getElementById("bub"), 0.02);
 
 	if (speech === true) {
 		setTimeout(sayQuote, 1000); // needs a delay
 	}
+
 }
 
 function loop() {
