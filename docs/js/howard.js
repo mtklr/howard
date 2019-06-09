@@ -6,10 +6,10 @@ window.onload = loop();
 function applyTheme(startNightHour, endNightHour) {
 	const hour = new Date().getHours();
 
+	document.body.className = "day";
+
 	if (hour > startNightHour || hour < endNightHour) {
 		document.body.className = "night";
-	} else {
-		document.body.className = "day";
 	}
 }
 
@@ -19,9 +19,9 @@ function checkDay(month, day) {
 
 	if (d.getMonth() === month && d.getDate() === day) {
 		return true;
-	} else {
-		return false;
 	}
+
+	return false;
 }
 
 // https://developers.google.com/web/fundamentals/primers/promises
@@ -60,22 +60,23 @@ function getJSON(url) {
 // pick from 1..last element in the array.
 function pickQuote(quotes) {
 	const pick = Math.floor(Math.random() * (quotes.data.length - 1)) + 1;
+	document.getElementById("phrase").textContent = quotes.data[pick].text;
 
 	if (quotes.data[pick].title) {
+		const url = "http://5by5.tv/b2w/" + pick;
 		var t = quotes.data[pick].title;
+
 		if (quotes.data[pick].topic) {
 			// if there's a topic, maybe pick it
 			const pickedTopic = Math.floor(Math.random() * 2);
+
 			if (pickedTopic === 1) {
 				t = quotes.data[pick].topic;
 			}
 		}
 
-		const url = "http://5by5.tv/b2w/" + pick;
 		document.getElementById("phrase").innerHTML = "<a href=\"" +
 			url.toString() + "\">" + t + "</a>";
-	} else {
-		document.getElementById("phrase").textContent = quotes.data[pick].text;
 	}
 }
 
