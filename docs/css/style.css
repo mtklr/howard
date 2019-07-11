@@ -51,11 +51,11 @@ a:visited {
 	top: 46%;
 	margin: auto;
 	transform: translate(0%, -50%);
-	width: 80%;
+	width: 82%;
 	color: #000;
-	font-size: 1.7em;
+	font-size: 1.75em;
 	text-align: center;
-	line-height: 1.2;
+	line-height: 1.15;
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	hyphens: auto;
