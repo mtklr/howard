@@ -168,7 +168,7 @@ function howNow() {
 		getQuotes();
 	}
 
-	fadeIn(document.getElementById("bub"), 0.02);
+	fadeIn(document.getElementById("bub"), 0.04);
 
 	if (speech === true) {
 		setTimeout(sayQuote, 1000); // needs a delay
