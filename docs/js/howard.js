@@ -1,5 +1,5 @@
-var speech = false;
-var button = document.getElementById("speak");
+let speech = false;
+const button = document.getElementById("speak");
 button.addEventListener("click", toggleSpeech, false);
 window.onload = loop();
 
@@ -28,7 +28,7 @@ function checkDay(month, day) {
 function get(url) {
 	return new Promise(function(resolve, reject) {
 		// xhr
-		var req = new XMLHttpRequest();
+		const req = new XMLHttpRequest();
 		req.open("GET", url);
 
 		req.onload = function() {
@@ -64,11 +64,11 @@ function pickQuote(quotes) {
 
 	if (quotes.data[pick].title) {
 		const url = "http://5by5.tv/b2w/" + pick;
-		var t = quotes.data[pick].title;
+		let t = quotes.data[pick].title;
 
 		if (quotes.data[pick].topic) {
 			// if there's a topic, maybe pick it
-			const pickedTopic = Math.floor(Math.random() * 2);
+			let pickedTopic = Math.floor(Math.random() * 2);
 
 			if (pickedTopic === 1) {
 				t = quotes.data[pick].topic;
@@ -94,9 +94,9 @@ function sayQuote() {
 		return;
 	}
 
-	var text = document.getElementById("phrase").textContent;
-	var msg = new SpeechSynthesisUtterance();
-	var voices = window.speechSynthesis.getVoices();
+	const text = document.getElementById("phrase").textContent;
+	const msg = new SpeechSynthesisUtterance();
+	const voices = window.speechSynthesis.getVoices();
 
 	// set default/fallback voice
 	msg.voice = voices[0];
@@ -146,7 +146,7 @@ function fadeIn(el, interval, display) {
 	interval = interval || 0.1;
 
 	function fade() {
-		var val = parseFloat(el.style.opacity) + interval;
+		const val = parseFloat(el.style.opacity) + interval;
 		if (val < 1) {
 			el.style.opacity = val;
 			requestAnimationFrame(fade);
