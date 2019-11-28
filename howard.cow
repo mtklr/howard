@@ -1,0 +1,14 @@
+## Howard Chicken
+$the_cow = <<EOC;
+    $thoughts
+     $thoughts   /\\/\\ 
+         \\   /
+       << $eyes |
+         |___|
+         |   |>_))__
+         |          )
+         (__________)
+          |      |
+          |      |
+          /\\    /\\
+EOC
