@@ -10,8 +10,13 @@ An artisanal, bespoke, curated, farm-to-screen collection of titles, topics, and
 
 ```console
 curl -O 'https://raw.githubusercontent.com/mtklr/howard/master/howard{,.dat}'
+
 brew install fortune
-fortune howard
+fortune /path/to/howard/
+
+brew install cowsay
+alias howsay='fortune /path/to/howard/ | cowsay -f /path/to/howard/howard.cow'
+howsay
 ```
 
 ![fortune](https://mtklr.github.com/images/howard-fortune.png)
