@@ -16,6 +16,8 @@ fortune /path/to/howard/
 
 brew install cowsay
 alias howsay='fortune /path/to/howard/ | cowsay -f /path/to/howard/howard.cow'
+# or even
+alias howsay='h="$(fortune /path/to/howard/)"; cowsay -f /path/to/howard/howard.cow "$h" && say -v Daniel "$h"'
 howsay
 ```
 
