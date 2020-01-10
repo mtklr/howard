@@ -29,9 +29,13 @@ howsay
 
 ![fortune](https://mtklr.github.com/images/howard-fortune.png)
 
-## Slack
+## Slack, etc.
 
-See [howard-bot](https://github.com/shoesandsocks/howard-bot)
+[howard-bot](https://github.com/shoesandsocks/howard-bot)
+
+[howard-mark-2](https://github.com/shoesandsocks/howard-mark-2)
+
+[chat-with-howard](https://github.com/shoesandsocks/chat-with-howard)
 
 ***
 
