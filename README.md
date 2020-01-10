@@ -12,12 +12,18 @@ An artisanal, bespoke, curated, farm-to-screen collection of titles, topics, and
 curl -O 'https://raw.githubusercontent.com/mtklr/howard/master/howard{,.dat}'
 
 brew install fortune
+
 fortune /path/to/howard/
 
 brew install cowsay
+
 alias howsay='fortune /path/to/howard/ | cowsay -f /path/to/howard/howard.cow'
+
 # or even
-alias howsay='h="$(fortune /path/to/howard/)"; cowsay -f /path/to/howard/howard.cow "$h" && say -v Daniel "$h"'
+
+alias howsay='h="$(fortune /path/to/howard/)"; \
+cowsay -f /path/to/howard/howard.cow "$h" && say -v Daniel "$h"'
+
 howsay
 ```
 
