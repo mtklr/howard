@@ -15,16 +15,15 @@ brew install fortune
 
 fortune /path/to/howard/
 
+# fancy
+
 brew install cowsay
 
-alias howsay='fortune /path/to/howard/ | cowsay -f /path/to/howard/howard.cow'
+alias howsay='p=/path/to/howard; fortune "$p" | cowsay -f "$p"/howard.cow'
 
-# or even
+# outspoken
 
-alias howsay='h="$(fortune /path/to/howard/)"; \
-cowsay -f /path/to/howard/howard.cow "$h" && say -v Daniel "$h"'
-
-howsay
+alias howsayv='p=/path/to/howard; h="$(fortune "$p")"; cowsay -f "$p"/howard.cow "$h" && say -v Daniel "$h"'
 ```
 
 ![fortune](https://mtklr.github.com/images/howard-fortune.png)
