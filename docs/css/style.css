@@ -65,14 +65,14 @@ a:visited {
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
-	width: 400px;
+	width: 420px;
 	cursor: pointer;
 }
 
 .soundicon {
 	position: absolute;
 	top: 460px;
-	left: 100px;
+	left: 80px;
 	width: 80px;
 	height: 180px;
 	background-size: 100% 100%;
