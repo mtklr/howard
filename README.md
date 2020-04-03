@@ -2,8 +2,6 @@
 
 An artisanal, bespoke, curated, farm-to-screen collection of titles, topics, and phrases from the venerable [Back to Work](http://5by5.tv/b2w) podcast (see [episode 126](http://5by5.tv/b2w/126)). (No affiliation with the show, just a fan.)
 
-![howard](https://mtklr.github.com/images/howard-web.png)
-
 ## Way of the Future
 
 [fortune](https://en.wikipedia.org/wiki/Fortune_%28Unix%29) cookie:
@@ -25,8 +23,6 @@ alias howsay='p=/path/to/howard; fortune "$p" | cowsay -f "$p"/howard.cow'
 
 alias howsayv='p=/path/to/howard; h="$(fortune "$p")"; cowsay -f "$p"/howard.cow "$h" && say -v Daniel "$h"'
 ```
-
-![fortune](https://mtklr.github.com/images/howard-fortune.png)
 
 ## Slack, etc.
 
