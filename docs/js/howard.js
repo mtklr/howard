@@ -1,6 +1,7 @@
 let speech = false;
 const button = document.getElementById("speak");
 button.addEventListener("click", toggleSpeech, false);
+const synth = window.speechSynthesis;
 window.onload = loop();
 
 function applyTheme(startNightHour, endNightHour) {
@@ -89,27 +90,48 @@ function getQuotes() {
 	}, Promise.resolve());
 }
 
-function sayQuote() {
-	if (! window.hasOwnProperty("speechSynthesis")) {
+function asyncVoices() {
+	return new Promise(function (resolve) {
+		voices = synth.getVoices();
+		// give the browser .5s to get the voice list, then call `resolve`
+		// to return values to the variable that's `await`ing them.
+		setTimeout(() => resolve(voices), 500);
+	});
+}
+
+// an async function that uses the func above, when called by the `if` below
+async function populateVoiceList() {
+	voices = await asyncVoices();
+}
+
+// the 'watcher' that calls the async function above
+if (synth.onvoiceschanged !== undefined) {
+	synth.onvoiceschanged = populateVoiceList;
+}
+
+async function sayQuote() {
+	if (!window.hasOwnProperty("speechSynthesis")) {
 		return;
 	}
 
 	const text = document.getElementById("phrase").textContent;
 	const msg = new SpeechSynthesisUtterance();
-	const voices = window.speechSynthesis.getVoices();
+	const voices = await asyncVoices();
 
 	// set default/fallback voice
 	msg.voice = voices[0];
 
 	// we prefer a British accent (Daniel, hopefully)
-	voices.forEach(function(voice) {
+	voices.forEach(function (voice) {
 		if (voice.lang === "en-GB") {
 			if (voice.name === "Daniel") {
-				msg.voice = voices.filter(function(voice) {
-					return voice.name === "Daniel"; })[0];
+				msg.voice = voices.filter(function (voice) {
+					return voice.name === "Daniel";
+				})[0];
 			} else {
-				msg.voice = voices.filter(function(voice) {
-					return voice.lang === "en-GB"; })[0];
+				msg.voice = voices.filter(function (voice) {
+					return voice.lang === "en-GB";
+				})[0];
 			}
 		}
 	});
