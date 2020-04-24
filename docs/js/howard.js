@@ -27,12 +27,12 @@ function checkDay(month, day) {
 
 // https://developers.google.com/web/fundamentals/primers/promises
 function get(url) {
-	return new Promise(function(resolve, reject) {
+	return new Promise(function (resolve, reject) {
 		// xhr
 		const req = new XMLHttpRequest();
 		req.open("GET", url);
 
-		req.onload = function() {
+		req.onload = function () {
 			if (req.status === 200) {
 				resolve(req.response);
 			} else {
@@ -41,7 +41,7 @@ function get(url) {
 		};
 
 		// handle errors
-		req.onerror = function() {
+		req.onerror = function () {
 			reject(new Error("Network Error"));
 		};
 
@@ -51,10 +51,12 @@ function get(url) {
 }
 
 function getJSON(url) {
-	return get(url).then(JSON.parse).catch(function(error) {
-		// console.error("getJSON failed for ", url, error);
-		throw error;
-	});
+	return get(url)
+		.then(JSON.parse)
+		.catch(function (error) {
+			console.log("getJSON failed for ", url, error);
+			throw error;
+		});
 }
 
 // for titles, show number matches its array index.
@@ -76,18 +78,21 @@ function pickQuote(quotes) {
 			}
 		}
 
-		document.getElementById("phrase").innerHTML = "<a href=\"" +
-			url.toString() + "\">" + t + "</a>";
+		document.getElementById("phrase").innerHTML =
+			'<a href="' + url.toString() + '">' + t + "</a>";
 	}
 }
 
 function getQuotes() {
-	return getJSON("js/howard.json").then(function(response) {
-		pickQuote(response);
-	}).catch(function(error) {
-		document.getElementById("phrase").textContent = "Hmm.";
-		throw error;
-	}, Promise.resolve());
+	return getJSON("https://howardchicken.com/js/howard.json")
+		.then(function (response) {
+			pickQuote(response);
+		})
+		.catch(function (error) {
+			console.log(error);
+			document.getElementById("phrase").textContent = "Hmm.";
+			throw error;
+		}, Promise.resolve());
 }
 
 function asyncVoices() {
@@ -118,23 +123,12 @@ async function sayQuote() {
 	const msg = new SpeechSynthesisUtterance();
 	const voices = await asyncVoices();
 
-	// set default/fallback voice
-	msg.voice = voices[0];
-
-	// we prefer a British accent (Daniel, hopefully)
-	voices.forEach(function (voice) {
-		if (voice.lang === "en-GB") {
-			if (voice.name === "Daniel") {
-				msg.voice = voices.filter(function (voice) {
-					return voice.name === "Daniel";
-				})[0];
-			} else {
-				msg.voice = voices.filter(function (voice) {
-					return voice.lang === "en-GB";
-				})[0];
-			}
-		}
+	// we prefer the dulcet tones of Daniel
+	const danielsVoice = voices.filter(function (voice) {
+		return voice.name === "Daniel";
 	});
+
+	msg.voice = danielsVoice[0] || voices[0];
 
 	msg.volume = 1;
 	msg.rate = 1;
@@ -149,13 +143,13 @@ function toggleSpeech() {
 		speech = true;
 		sayQuote();
 		document.getElementById("sound").classList.add("speakicon");
-		setTimeout(function() {
+		setTimeout(function () {
 			document.getElementById("sound").classList.remove("speakicon");
 		}, 500);
 	} else {
 		speech = false;
 		document.getElementById("sound").classList.add("dontspeakicon");
-		setTimeout(function() {
+		setTimeout(function () {
 			document.getElementById("sound").classList.remove("dontspeakicon");
 		}, 500);
 	}
@@ -185,7 +179,7 @@ function howNow() {
 
 	if (checkDay(4, 4)) {
 		document.getElementById("phrase").innerHTML =
-			"<a href=\"http://www.upc-online.org/respect/\">Happy International Respect for Chickens Day.</a>";
+			'<a href="http://www.upc-online.org/respect/">Happy International Respect for Chickens Day.</a>';
 	} else {
 		getQuotes();
 	}
