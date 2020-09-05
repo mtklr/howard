@@ -1,4 +1,4 @@
-# [Howard Chicken](https://www.howardchicken.com)
+# Howard Chicken
 
 An artisanal, bespoke, curated, farm-to-screen collection of titles, topics, and phrases from the venerable [Back to Work](http://5by5.tv/b2w) podcast (see [episode 126](http://5by5.tv/b2w/126)). (No affiliation with the show, just a fan.)
 
