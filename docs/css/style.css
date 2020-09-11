@@ -5,6 +5,7 @@
 body {
 	font-size: 100%;
 	font: 1em Futura, Helvetica, sans-serif;
+	color: #000;
 }
 
 a {
@@ -18,16 +19,6 @@ a:hover {
 
 a:visited {
 	color: #369;
-}
-
-.day {
-	background: #fff;
-	color: #000;
-}
-
-.night {
-	background: #000;
-	color: #fff;
 }
 
 .container {
@@ -52,7 +43,6 @@ a:visited {
 	margin: auto;
 	transform: translate(0%, -50%);
 	width: 82%;
-	color: #000;
 	font-size: 1.7em;
 	text-align: center;
 	line-height: 1.15;

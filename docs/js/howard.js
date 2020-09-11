@@ -4,16 +4,6 @@ button.addEventListener("click", toggleSpeech, false);
 const synth = window.speechSynthesis;
 window.onload = loop();
 
-function applyTheme(startNightHour, endNightHour) {
-	const hour = new Date().getHours();
-
-	document.body.className = "day";
-
-	if (hour > startNightHour || hour < endNightHour) {
-		document.body.className = "night";
-	}
-}
-
 // month is 0..11, day is 1..31
 function checkDay(month, day) {
 	const d = new Date();
@@ -175,8 +165,6 @@ function fadeIn(el, interval, display) {
 }
 
 function howNow() {
-	applyTheme(19, 5);
-
 	if (checkDay(4, 4)) {
 		document.getElementById("phrase").innerHTML =
 			'<a href="http://www.upc-online.org/respect/">Happy International Respect for Chickens Day.</a>';
