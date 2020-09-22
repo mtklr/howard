@@ -26,8 +26,8 @@ alias howsayv='p=/path/to/howard; h="$(fortune "$p")"; cowsay -f "$p"/howard.cow
 
 ## Slack, etc.
 
-[howard-bot](https://github.com/shoesandsocks/howard-bot)
-
-[howard-mark-2](https://github.com/shoesandsocks/howard-mark-2)
-
 [chat-with-howard](https://github.com/shoesandsocks/chat-with-howard)
+
+[howard-mark-3](https://github.com/shoesandsocks/howard-mark-2)
+
+[hc-podcast](https://github.com/shoesandsocks/hc-podcast)
