@@ -5,9 +5,9 @@ strfile howard
 
 echo
 echo 'fortune:'
-fortune .
-fortune .
-fortune .
+fortune $PWD
+fortune $PWD
+fortune $PWD
 
 echo
 echo 'latest title:'
