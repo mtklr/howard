@@ -1,5 +1,7 @@
 # Howard Chicken
 
+[![Howard Approved](https://img.shields.io/badge/howard%F0%9F%90%94-approved-yellow)](https://www.howardchicken.com)
+
 An artisanal, bespoke, curated, farm-to-screen collection of titles, topics, and phrases from the venerable [Back to Work](http://5by5.tv/b2w) podcast (see [episode 126](http://5by5.tv/b2w/126)). (No affiliation with the show, just a fan.)
 
 ## Way of the Future
@@ -25,10 +27,8 @@ brew install figlet lolcat
 alias wowsay='p=/path/to/howard; fortune "$p" | figlet -C utf8 | cowsay -np -f "$p"/howard.cow | lolcat'
 ```
 
-## Slack, etc.
+## Etc.
 
-[chat-with-howard](https://github.com/shoesandsocks/chat-with-howard)
-
-[howard-mark-3](https://github.com/shoesandsocks/howard-mark-2)
+[howard-bolt](https://github.com/shoesandsocks/howard-bolt)
 
 [hc-podcast](https://github.com/shoesandsocks/hc-podcast)
